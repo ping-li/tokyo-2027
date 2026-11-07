@@ -1,636 +1,93 @@
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-</head>
-<body onload="startTime(); GetJson();">
-<div>
-<div id="txt"></div>
-<ul>
-  <li>
-    <div class="containIcons">
-      <div data-element="icon_Obj0">
-        <div data-element="a_Obj0">
-          <div data-element="a_a_Obj0"></div>
-        </div>
-        <div data-element="b_Obj0">
-          <div data-element="b_a_Obj0"></div>
-          <div data-element="b_b_Obj0"></div>
-          </div>
-          <div data-element="c_Obj0"></div>
-        </div>
-      <div class="Text Obj0"></div>
-    </div>
-  </li>
-  <li>
-    <div class="containIcons">
-      <div data-element="icon_Obj1">
-        <div data-element="a_Obj1">
-          <div data-element="a_a_Obj1"></div>
-        </div>
-        <div data-element="b_Obj1">
-          <div data-element="b_a_Obj1"></div>
-          <div data-element="b_b_Obj1"></div>
-          </div>
-          <div data-element="c_Obj1"></div>
-        </div>
-      <div class="Text Obj1"></div>
-    </div>
-  </li>
-  <li>
-    <div class="containIcons">
-      <div data-element="icon_Obj2">
-        <div data-element="a_Obj2">
-          <div data-element="a_a_Obj2"></div>
-        </div>
-        <div data-element="b_Obj2">
-          <div data-element="b_a_Obj2"></div>
-          <div data-element="b_b_Obj2"></div>
-          </div>
-          <div data-element="c_Obj2"></div>
-        </div>
-      <div class="Text Obj2"></div>
-    </div>
-  </li>
-  <li>
-    <div class="containIcons">
-      <div data-element="icon_Obj3">
-        <div data-element="a_Obj3">
-          <div data-element="a_a_Obj3"></div>
-        </div>
-        <div data-element="b_Obj3">
-          <div data-element="b_a_Obj3"></div>
-          <div data-element="b_b_Obj3"></div>
-          </div>
-          <div data-element="c_Obj3"></div>
-        </div>
-      <div class="Text Obj3"></div>
-    </div>
-  </li>
-  <li>
-    <div class="containIcons">
-      <div data-element="icon_Obj4">
-        <div data-element="a_Obj4">
-          <div data-element="a_a_Obj4"></div>
-        </div>
-        <div data-element="b_Obj4">
-          <div data-element="b_a_Obj4"></div>
-          <div data-element="b_b_Obj4"></div>
-          </div>
-          <div data-element="c_Obj4"></div>
-        </div>
-      <div class="Text Obj4"></div>
-    </div>
-  </li>
-  <li>
-    <div class="containIcons">
-      <div data-element="icon_Obj5">
-        <div data-element="a_Obj5">
-          <div data-element="a_a_Obj5"></div>
-        </div>
-        <div data-element="b_Obj5">
-          <div data-element="b_a_Obj5"></div>
-          <div data-element="b_b_Obj5"></div>
-          </div>
-          <div data-element="c_Obj5"></div>
-        </div>
-      <div class="Text Obj5"></div>
-    </div>
-  </li>
-</ul>
-</div>
-<form class="SearchForm"  method="get" action="https://google.com/search" autocomplete="off">
-  <input class="searchBox" id="searchBox" name="q" type="text" placeholder="" autofocus>
-</form>
-</body>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tokyo, Slowly | Dec 29-Jan 13</title>
 <style>
-
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
-
-body {
-  background-color: #161616;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.SearchForm {
-  position: fixed;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.searchBox {
-  font-size: 5em;
-  text-align: center;
-  background-color: #161616;
-  border: none;
-  color: transparent;
-  text-shadow: 0 0 0 white;
-}
-
-.searchBox:focus {
-  outline:0;
-}
-
-#txt {
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 5em;
-  color: white;
-}
-
-ul {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  position: relative;
-  float: Left;
-  margin: 0.5em;
-}
-
-.Text {
-  color: #ddd;
-}
-
-.icon {
-  position: relative;
-  color: #161616;
-  position: relative;
-  display: inline-block;
-  width: 12em;
-  height: 10em;
-  font-size: 0.7em; /* control icon size here */
-}
-
-.cloud {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  width: 3.6875em;
-  height: 3.6875em;
-  margin: -1.84375em;
-  background: currentColor;
-  border-radius: 50%;
-  box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em,
-    2.0625em 0.9375em 0 -0.9375em,
-    0 0 0 0.375em #fff,
-    -2.1875em 0.6875em 0 -0.3125em #fff,
-    2.0625em 0.9375em 0 -0.5625em #fff;
-}
-.cloud:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: -0.5em;
-  display: block;
-  width: 4.5625em;
-  height: 1em;
-  background: currentColor;
-  box-shadow: 0 0.4375em 0 -0.0625em #fff;
-}
-.cloud:nth-child(2) {
-  z-index: 0;
-  background: #fff;
-  box-shadow:
-    -2.1875em 0.6875em 0 -0.6875em #fff,
-    2.0625em 0.9375em 0 -0.9375em #fff,
-    0 0 0 0.375em #fff,
-    -2.1875em 0.6875em 0 -0.3125em #fff,
-    2.0625em 0.9375em 0 -0.5625em #fff;
-  opacity: 0.3;
-  transform: scale(0.5) translate(6em, -3em);
-  animation: cloud 4s linear infinite;
-}
-.cloud:nth-child(2):after { background: #fff; }
-
-.sun {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  margin: -1.25em;
-  background: currentColor;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0.375em #fff;
-  animation: spin 12s infinite linear;
-}
-.rays {
-  position: absolute;
-  top: -2em;
-  left: 50%;
-  display: block;
-  width: 0.375em;
-  height: 1.125em;
-  margin-left: -0.1875em;
-  background: #fff;
-  border-radius: 0.25em;
-  box-shadow: 0 5.375em #fff;
-}
-.rays:before,
-.rays:after {
-  content: '';
-  position: absolute;
-  top: 0em;
-  left: 0em;
-  display: block;
-  width: 0.375em;
-  height: 1.125em;
-  transform: rotate(60deg);
-  transform-origin: 50% 3.25em;
-  background: #fff;
-  border-radius: 0.25em;
-  box-shadow: 0 5.375em #fff;
-}
-.rays:before {
-  transform: rotate(120deg);
-}
-.cloud + .sun {
-  margin: -2em 1em;
-}
-
-.rain,
-.lightning,
-.snow {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  width: 3.75em;
-  height: 3.75em;
-  margin: 0.375em 0 0 -2em;
-  background: currentColor;
-}
-
-.rain:after {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  width: 1.125em;
-  height: 1.125em;
-  margin: -1em 0 0 -0.25em;
-  background: #0cf;
-  border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
-  box-shadow:
-    0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-    -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-    -1.375em -0.125em 0 rgba(255,255,255,0.2);
-  transform: rotate(-28deg);
-  animation: rain 3s linear infinite;
-}
-
-.bolt {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -0.25em 0 0 -0.125em;
-  color: #fff;
-  opacity: 0.3;
-  animation: lightning 2s linear infinite;
-}
-.bolt:nth-child(2) {
-  width: 0.5em;
-  height: 0.25em;
-  margin: -1.75em 0 0 -1.875em;
-  transform: translate(2.5em, 2.25em);
-  opacity: 0.2;
-  animation: lightning 1.5s linear infinite;
-}
-.bolt:before,
-.bolt:after {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  margin: -1.625em 0 0 -1.0125em;
-  border-top: 1.25em solid transparent;
-  border-right: 0.75em solid;
-  border-bottom: 0.75em solid;
-  border-left: 0.5em solid transparent;
-  transform: skewX(-10deg);
-}
-.bolt:after {
-  margin: -0.25em 0 0 -0.25em;
-  border-top: 0.75em solid;
-  border-right: 0.5em solid transparent;
-  border-bottom: 1.25em solid transparent;
-  border-left: 0.75em solid;
-  transform: skewX(-10deg);
-}
-.bolt:nth-child(2):before {
-  margin: -0.75em 0 0 -0.5em;
-  border-top: 0.625em solid transparent;
-  border-right: 0.375em solid;
-  border-bottom: 0.375em solid;
-  border-left: 0.25em solid transparent;
-}
-.bolt:nth-child(2):after {
-  margin: -0.125em 0 0 -0.125em;
-  border-top: 0.375em solid;
-  border-right: 0.25em solid transparent;
-  border-bottom: 0.625em solid transparent;
-  border-left: 0.375em solid;
-}
-
-.flake:before,
-.flake:after {
-  content: '\2744';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -1.025em 0 0 -1.0125em;
-  color: #fff;
-  list-height: 1em;
-  opacity: 0.2;
-  animation: spin 8s linear infinite reverse;
-}
-.flake:after {
-  margin: 0.125em 0 0 -1em;
-  font-size: 1.5em;
-  opacity: 0.4;
-  animation: spin 14s linear infinite;
-}
-.flake:nth-child(2):before {
-  margin: -0.5em 0 0 0.25em;
-  font-size: 1.25em;
-  opacity: 0.2;
-  animation: spin 10s linear infinite;
-}
-.flake:nth-child(2):after {
-  margin: 0.375em 0 0 0.125em;
-  font-size: 2em;
-  opacity: 0.4;
-  animation: spin 16s linear infinite reverse;
-}
-
-
-/* Animations */
-
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes cloud {
-  0% { opacity: 0; }
-  50% { opacity: 0.3; }
-  100% {
-    opacity: 0;
-    transform: scale(0.5) translate(-200%, -3em);
-  }
-}
-
-@keyframes rain {
-  0% {
-    background: #0cf;
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 #0cf;
-  }
-  25% {
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em #0cf,
-      -1.375em -0.125em 0 rgba(255,255,255,0.2);
-  }
-  50% {
-    background: rgba(255,255,255,0.3);
-    box-shadow:
-      0.625em 0.875em 0 -0.125em #0cf,
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 rgba(255,255,255,0.2);
-  }
-  100% {
-    box-shadow:
-      0.625em 0.875em 0 -0.125em rgba(255,255,255,0.2),
-      -0.875em 1.125em 0 -0.125em rgba(255,255,255,0.2),
-      -1.375em -0.125em 0 #0cf;
-  }
-}
-
-@keyframes lightning {
-  45% {
-    color: #fff;
-    background: #fff;
-    opacity: 0.2;
-  }
-  50% {
-    color: #0cf;
-    background: #0cf;
-    opacity: 1;
-  }
-  55% {
-    color: #fff;
-    background: #fff;
-    opacity: 0.2;
-  }
-}
-
+:root{--bg:#f4f0e8;--panel:#fffdf9;--ink:#252824;--muted:#6c716c;--line:#ded9cf;--green:#2f493c;--sage:#dfe9e1;--food:#63b7df;--shop:#e96f9d;--trip:#356fa3;--rest:#4f8f68;--special:#8655b5;--shadow:0 12px 35px rgba(44,50,44,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}.app{max-width:1440px;margin:auto;min-height:100vh}.hero{margin:18px 18px 0;padding:24px 28px;border-radius:22px;background:linear-gradient(135deg,#263a31,#496253);color:#fff;display:flex;justify-content:space-between;gap:24px;align-items:end}.hero h1{font-size:clamp(26px,4vw,42px);letter-spacing:-.03em;margin:0}.hero p{margin:7px 0 0;color:#dfe8e1}.hero-meta{text-align:right;font-size:13px;line-height:1.55;color:#e7eee9}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 18px 0}.legend{display:flex;flex-wrap:wrap;gap:8px}.legend span{background:rgba(255,255,255,.72);border:1px solid var(--line);padding:6px 9px;border-radius:999px;font-size:11px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.hint{font-size:12px;color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:16px;padding:16px 18px 24px}.calendar-shell,.sidebar{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.calendar-shell{padding:15px}.weekdays,.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.weekdays div{text-align:center;text-transform:uppercase;letter-spacing:.08em;font-size:10px;font-weight:800;color:#85877f;padding:5px}.day{appearance:none;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:132px;color:var(--ink);cursor:pointer;position:relative;transition:.18s ease;box-shadow:0 2px 8px rgba(40,45,40,.03)}.day:hover{transform:translateY(-2px);border-color:#aab8ad;box-shadow:0 8px 18px rgba(42,52,45,.09)}.day:focus-visible{outline:3px solid #9bbba5;outline-offset:2px}.day.selected{border:3px solid var(--green);background:#edf5ef;box-shadow:0 9px 24px rgba(47,73,60,.15)}.day.empty{background:transparent;border:0;box-shadow:none;cursor:default}.date{font-size:11px;font-weight:900;color:#565d57}.day-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.mini{font-size:8px;font-weight:850;letter-spacing:.035em;padding:3px 5px;border-radius:999px;background:#f0ece5;color:#515751}.day.selected .mini{background:#dce9df;color:#263d31}.place{font-size:13px;font-weight:800;line-height:1.25;margin:8px 0 5px}.summary{font-size:10px;line-height:1.42;color:var(--muted)}.stripe{position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 5px 5px 0}.energy{position:absolute;right:8px;bottom:8px;font-size:8px;letter-spacing:.04em;background:#eeeae2;border-radius:999px;padding:3px 6px;font-weight:800}.sidebar{padding:20px;position:sticky;top:16px;align-self:start;min-height:530px}.side-date{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:850}.sidebar h2{font-size:25px;line-height:1.1;margin:7px 0 5px;letter-spacing:-.025em}.side-sub{font-size:13px;color:var(--muted);margin-bottom:18px}.timeline{display:grid;grid-template-columns:62px 1fr;gap:0 12px}.time{font-size:11px;color:#777d77;font-weight:800;padding:11px 0;border-top:1px solid var(--line)}.activity{font-size:13px;line-height:1.45;padding:10px 0;border-top:1px solid var(--line)}.activity strong{display:block;margin-bottom:2px}.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}.chip{font-size:10px;background:var(--sage);color:#31483b;padding:5px 8px;border-radius:999px}.note{margin-top:18px;padding:12px 13px;border-radius:12px;background:#f1ede5;font-size:12px;line-height:1.5;color:#5d615d}.flex-note{margin-top:10px;font-size:11px;color:#777d77}.mobile-title{display:none}.food .stripe{background:var(--food)}.food{background:#eef9fd}.shop .stripe{background:var(--shop)}.shop{background:#fff1f6}.trip .stripe{background:var(--trip)}.rest .stripe{background:var(--rest)}.special .stripe{background:var(--special)}
+.tabs{display:flex;gap:8px;margin:16px 18px 0}.tab{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:9px 14px;border-radius:999px;font-weight:850;cursor:pointer}.tab.active{background:var(--green);color:#fff;border-color:var(--green)}.view{display:none}.view.active{display:block}.reserve-view{padding:16px 18px 28px}.reserve-intro{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:12px}.reserve-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.reserve-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.reserve-card h3{margin:0 0 4px;font-size:17px}.reserve-card p{margin:7px 0;font-size:12px;line-height:1.5;color:var(--muted)}.reserve-row{display:grid;grid-template-columns:105px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:12px}.reserve-row b{color:var(--ink)}.priority{display:inline-block;font-size:9px;font-weight:900;padding:4px 7px;border-radius:999px;margin-bottom:8px}.high{background:#ffe0e8;color:#8a2047}.medium{background:#fff0c7;color:#6d4b00}.walk{background:#dff2fa;color:#225b72}.geo{margin-top:14px;padding:11px 12px;border:1px solid #b9d8c2;background:#edf7ef;border-radius:12px;font-size:12px;line-height:1.45}.geo strong{color:#28583a}.source-note{font-size:11px;color:var(--muted);margin-top:14px}@media(max-width:800px){.reserve-grid{grid-template-columns:1fr}.tabs{margin:12px 10px 0}.reserve-view{padding:12px 10px 22px}}.rigidity{margin-top:8px;font-size:9px;font-weight:900;padding:4px 7px;border-radius:999px;display:inline-block}.rigid{background:#ffe1e1;color:#872d2d}.semiflex{background:#fff0c7;color:#67500b}.flexible{background:#dff2e4;color:#28583a}.todo-view{padding:16px 18px 28px}.todo-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}.todo-progress{font-size:13px;font-weight:850}.todo-list{display:grid;gap:10px}.todo-item{display:grid;grid-template-columns:28px 145px 1fr 160px;gap:12px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:14px}.todo-item.done{opacity:.58}.todo-item.done .todo-name{text-decoration:line-through}.todo-check{width:20px;height:20px;accent-color:var(--green);margin-top:2px}.todo-window{font-size:11px;font-weight:900;color:#7e3956}.todo-name{font-size:14px;font-weight:850;margin-bottom:4px}.todo-detail,.todo-action{font-size:11px;line-height:1.45;color:var(--muted)}.todo-when{font-size:11px;font-weight:800;background:#f1ece4;border-radius:10px;padding:8px}.reset-btn{border:1px solid var(--line);background:#fff;color:#333;border-radius:999px;padding:7px 11px;cursor:pointer}@media(max-width:800px){.todo-view{padding:12px 10px 22px}.todo-item{grid-template-columns:28px 1fr}.todo-window,.todo-when{grid-column:2}.todo-toolbar{align-items:flex-start}.todo-item{gap:7px 10px}}.lumine-flag{margin-top:10px;padding:10px 12px;border-radius:12px;background:#fff0f6;border:1px solid #efb5ca;font-size:12px;line-height:1.45}.lumine-flag strong{color:#9f3560}@media(max-width:1050px){.layout{grid-template-columns:1fr 310px}.day{min-height:145px}.summary{display:none}}
+@media(max-width:800px){.hero{align-items:start}.hero-meta{display:none}.layout{grid-template-columns:1fr}.sidebar{position:static;min-height:0}.weekdays{display:none}.calendar{grid-template-columns:repeat(2,minmax(0,1fr))}.day{min-height:118px}.summary{display:block}.mobile-title{display:block;font-size:12px;color:var(--muted);margin-bottom:10px}}
+@media(max-width:480px){.hero{margin:10px 10px 0;padding:20px}.toolbar{margin:12px 10px 0;align-items:start;flex-direction:column}.hint{display:none}.layout{padding:12px 10px 20px}.calendar{grid-template-columns:1fr}.day{min-height:102px}.calendar-shell{padding:10px}}
+@media(prefers-color-scheme:dark){:root{--bg:#1c211e;--panel:#272d29;--ink:#f2efe8;--muted:#b8bcb7;--line:#424a44;--sage:#34483b}.day{background:#2c332e}.day.selected{background:#344239}.legend span{background:#29302b}.energy,.note{background:#3a403b;color:#e0dfd9}}
 </style>
-
+</head>
+<body>
+<div class="app">
+<header class="hero"><div><h1>Tokyo, slowly.</h1><p>Food-first neighbourhoods, vintage hunting and protected downtime</p></div><div class="hero-meta">Dec 29-Jan 13<br>Hmlet Shinjuku Gyoenmae + Wa-tei Atami<br>HND arrival 16:40 · NRT departure 18:45</div></header>
+<nav class="tabs" aria-label="Trip views"><button type="button" class="tab active" data-view="itineraryView">Calendar</button><button type="button" class="tab" data-view="reservationView">Reservations & release windows</button><button type="button" class="tab" data-view="todoView">Booking to-do list</button></nav>
+<section id="itineraryView" class="view active">
+<div class="toolbar"><div class="legend"><span><i class="dot" style="background:var(--food)"></i>Food + explore</span><span><i class="dot" style="background:var(--shop)"></i>Shopping</span><span><i class="dot" style="background:var(--trip)"></i>Day trip</span><span><i class="dot" style="background:var(--rest)"></i>Rest/reset</span><span><i class="dot" style="background:var(--special)"></i>Special</span></div><div class="hint">Select a date to see its pacing</div></div>
+<main class="layout">
+<section class="calendar-shell"><div class="mobile-title">Select a day</div><div class="weekdays"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div><div class="calendar" id="calendar"></div></section>
+<aside class="sidebar" aria-live="polite"><div class="side-date" id="sideDate"></div><h2 id="sideTitle"></h2><div class="side-sub" id="sideSub"></div><div class="timeline" id="timeline"></div><div class="chips" id="chips"></div><div class="note" id="note"></div><div class="geo" id="geo"></div><div class="lumine-flag" id="lumine"></div><div class="flex-note" id="flexNote"></div></aside>
+</main></section>
+<section id="reservationView" class="view reserve-view">
+<div class="reserve-intro"><strong>Reservation dashboard</strong><br><span style="font-size:12px;color:var(--muted)">Use this as the booking checklist. Exact January holiday operations should still be reconfirmed shortly before the trip.</span></div><div class="reserve-grid" id="reserveGrid"></div><div class="source-note">Strategy: lock the high-priority releases first, then let walk-in restaurants follow the geography of each day.</div></section><section id="todoView" class="view todo-view"><div class="todo-toolbar"><div><strong>Upcoming booking actions</strong><div class="source-note">All action times below are localized to Richmond Hill/Toronto time. During your booking period, EST is 14 hours behind JST. Dates may therefore fall on the previous calendar day.</div></div><div><div class="todo-progress" id="todoProgress"></div><button type="button" class="reset-btn" id="resetTodos">Reset</button></div></div><div class="geo" style="margin:0 0 12px"><strong>EST conversion rule</strong><br>For 12:00 PM JST releases, set the alarm for 10:00 PM EST on the previous date. For 10:00 AM JST phone openings, call at 8:00 PM EST on the previous date.</div><div class="todo-list" id="todoList"></div></section></div>
 <script>
+(()=>{
+const days=[
+{d:'Dec 29',w:'Tue',title:'Arrival → Shinjuku',sub:'Land, check in and decompress',type:'food',energy:'VERY EASY',summary:'HND 16:40 · local dinner',items:[['16:40','Arrive at HND','Clear immigration, collect bags and transfer to Shinjuku.'],['Evening','Check in','Settle into Hmlet Shinjuku Gyoenmae.'],['Dinner','Stay local','Choose a simple nearby ramen, teishoku or izakaya meal.']],chips:['Arrival','Shinjuku','No reservations'],note:'Do not attach an important restaurant to arrival night. The goal is food, shower and sleep.',geo:'Nearby opportunity: Gyutan no Lemon, Tsukemen Gonokami Seisakusho, Saizeriya, Yakiniku Like and other Shinjuku fami-res.'},
+{d:'Dec 30',w:'Wed',title:'Ginza + Yurakucho',sub:'A polished but flexible first full day',type:'food',energy:'EASY',summary:'Late start · food halls · housewares',items:[['Morning','Sleep in','Easy breakfast and a slow start.'],['Midday','Ginza + Yurakucho','Begin with department-store food halls, stationery and housewares.'],['Afternoon','Flexible Ginza browsing','Keep the route compact and take café breaks as needed.'],['Evening','Return to Shinjuku','Casual dinner near Hmlet and an early night if jet lag hits.']],chips:['Ginza','Yurakucho','Food halls','Housewares'],note:'Ginza is frontloaded, but the day stays deliberately loose so jet lag can dictate the pace.',geo:'Geographic cluster: Pain Maison Ginza → Ginza shopping → Ginza West Aoyama Garden → Roppongi. Tsujihan Ark Hills is an efficient seafood stop in the Roppongi/Akasaka zone; PST Roppongi is a nearby pizza alternative. Tsujihan is walk-in only, so an off-peak meal is smartest.'},
+{d:'Dec 31',w:'Thu',title:'Yanaka Ginza + Traditional NYE',sub:'Old Tokyo atmosphere and temple bells',type:'special',energy:'MEDIUM',summary:'Yanaka food stroll · rest · temple',items:[['Late AM','Yanaka Ginza','Browse the old shopping street and graze as places are open.'],['Afternoon','Old Tokyo walk','Yanaka, Sendagi and nearby lanes at an unhurried pace.'],['Late PM','Return and rest','Warm up and reset before the evening.'],['Evening','Traditional New Year','Have dinner, then visit a neighbourhood temple for joya-no-kane.']],chips:['Yanaka Ginza','Street food','Joya-no-kane'],note:'Holiday hours will vary. Treat the daytime as atmospheric wandering rather than a fixed food checklist.',geo:'East-Tokyo opportunity: Yanaka can extend toward Ueno, Kappabashi and YN Coffee Atelier in Matsugaya, but Dec 31 holiday operations must be confirmed.'},
+{d:'Jan 1',w:'Fri',title:'Slow New Year',sub:'Lesser-crowded hatsumode and true downtime',type:'rest',energy:'VERY EASY',summary:'Sleep in · local shrine · flexible food',items:[['Morning','Sleep in','No alarm and no early transit.'],['Midday','Neighbourhood hatsumode','Choose a smaller local shrine rather than Meiji Jingu or Senso-ji.'],['Afternoon','Unstructured wandering','Walk around Shinjuku Gyoenmae or rest at home.'],['Evening','Flexible dinner','Rely on verified holiday openings, hotel dining or a dependable chain if needed.']],chips:['Hatsumode','Rest','Holiday hours'],note:'This is intentionally your lightest Tokyo day. Many independent restaurants may still be closed.',geo:'Best opportunity for open-chain comfort food: Saizeriya, Gusto, Jonathan’s, Royal Host or another fami-res near Shinjuku.'},
+{d:'Jan 2',w:'Sat',title:'Kichijoji',sub:'Park, small shops and casual eating',type:'shop',energy:'MEDIUM',summary:'Inokashira · shops · izakaya',items:[['Late AM','Inokashira area','Start outdoors and ease into the neighbourhood.'],['Lunch','Small-meal strategy','Graze rather than committing to a long formal lunch.'],['Afternoon','Kichijoji shopping','Browse vintage, clothing, lifestyle and houseware shops.'],['Evening','Izakaya mood','Stay for dinner if energy and holiday openings cooperate.']],chips:['Kichijoji','Houseware','Izakaya'],note:'A moderate first shopping day. Keep expectations flexible because New Year closures may continue.',geo:'Anchor opportunity: Hikiniku to Kome Kichijoji. Use an Advance Priority Ticket rather than same-day registration.'},
+{d:'Jan 3',w:'Sun',title:'Nakameguro + Daikanyama',sub:'Waterfront strolling, design shops and pizza',type:'food',energy:'EASY',summary:'River walk · pizza · cafés',items:[['Late AM','Nakameguro','Walk the river and browse at a relaxed pace.'],['Lunch','Pizza candidate','Use this as one of your Japanese pizza-scene opportunities.'],['Afternoon','Walk to Daikanyama','Cafés, design-forward stores and gentle shopping.'],['Evening','Optional early night','Return before you feel obligated to fill the day.']],chips:['Nakameguro','Daikanyama','Pizza'],note:'This is an intentionally easy bridge between New Year and your main shopping days.',geo:'Strong pizza opportunity: Seirinkan is essentially on-route in Nakameguro. Lunch is walk-in/queue-focused; dinner reservations are by phone and are recommended. Keep 400°C Pizza floating because its reservation releases only two days ahead.'},
+{d:'Jan 4',w:'Mon',title:'AZKK Placeholder + Omotesando',sub:'Optional office visit paired with central shopping',type:'shop',energy:'MEDIUM',summary:'AZKK optional · Omotesando · Shibuya',items:[['Morning','AstraZeneca KK placeholder','Use this weekday block only if the office visit is confirmed.'],['Lunch','Central Tokyo lunch','Choose something convenient to the confirmed office location.'],['Afternoon','Omotesando → Shibuya','Japanese brands, design stores and polished shopping.'],['Evening','Friends dinner slot #1','Movable placeholder if the geography works.']],chips:['AZKK optional','Omotesando','Shibuya','Friends TBD'],note:'Frontloading the optional office visit keeps Jan 12 protected as an easy final full day.',geo:'AZKK is unconfirmed for Jan 4. If closed, pivot to Mukai in Yoyogi-Hachiman, then Omotesando/Shibuya. This is also a possible Ginza West Aoyama Garden fallback.'},
+{d:'Jan 5',w:'Tue',title:'Tokyo → Atami',sub:'Transfer day and start of the reset',type:'trip',energy:'RESET',summary:'Unhurried transfer · onsen · dinner',items:[['Morning','Pack slowly','No Tokyo activity before departure.'],['Midday','Travel to Atami','Keep the transfer unhurried.'],['Afternoon','Check in at Wa-tei','Settle in and use the onsen.'],['Dinner','Included at Wa-tei','No external dinner planning needed.']],chips:['Atami','Wa-tei','Onsen'],note:'Treat the ryokan arrival itself as the activity.'},
+{d:'Jan 6',w:'Wed',title:'Atami Rest Day',sub:'The protected midpoint reset',type:'rest',energy:'REST',summary:'No agenda · breakfast + dinner included',items:[['Morning','Included breakfast','Take your time.'],['Day','No required plans','Onsen, reading, naps and only a short walk if desired.'],['Dinner','Included at Wa-tei','Stay fully in ryokan mode.']],chips:['Full rest','Onsen','Meals included'],note:'Do not convert this into a sightseeing day. This reset protects the second half of the trip.',geo:'No Tokyo food targets. Breakfast and dinner are already covered at Wa-tei.'},
+{d:'Jan 7',w:'Thu',title:'Atami → Tokyo',sub:'A gentle return with no major neighbourhood',type:'trip',energy:'EASY',summary:'Breakfast · return · local dinner',items:[['Morning','Included breakfast','Enjoy the final ryokan morning.'],['Midday','Return to Shinjuku','Check back in and unpack.'],['Afternoon','Rest at home','Laundry, nap or a very local walk.'],['Dinner','Near Hmlet','Choose based on energy.']],chips:['Transfer','Laundry','Local meal'],note:'Keeping this light prevents the Atami reset from being undone immediately.'},
+{d:'Jan 8',w:'Fri',title:'Shimokitazawa',sub:'Primary plan: vintage, curry and casual food',type:'shop',energy:'MEDIUM',summary:'Vintage · curry/ramen · Kamakura optional',items:[['Late AM','Shimokitazawa','Arrive as shops begin opening.'],['Lunch','Curry or ramen','Build the day around casual neighbourhood food.'],['Afternoon','Vintage circuit','Mix curated stores with lower-cost treasure hunting.'],['Optional swap','Kamakura','Use Kamakura only if you want another coastal outing after Atami.']],chips:['Shimokitazawa','Vintage','Curry','Kamakura optional'],note:'Shimokitazawa is the priority. Kamakura remains an optional full-day swap rather than a required stop.',geo:'West-side cluster: Mukai at Yoyogi-Hachiman can precede Shimokitazawa. Use this date for 400°C Pizza only if the two-day release produces a workable slot.'},
+{d:'Jan 9',w:'Sat',title:'Oi Racecourse Flea Market',sub:'The anchored treasure-hunting morning',type:'special',energy:'MED+',summary:'Go early · vintage + houseware',items:[['Early AM','Travel to Oi Racecourse','Arrive near opening for the best selection.'],['Morning','Tokyo City Flea Market','Prioritize clothing, housewares and unusual secondhand finds.'],['Lunch','Oimachi or Shinagawa','Leave the market for a proper meal.'],['Afternoon','Return and decompress','Drop off purchases, rest, or browse only if you still have energy.'],['Evening','Fancy dinner candidate','A natural slot for one of the two nicer meals.']],chips:['Flea market','Houseware','Vintage','Fancy meal'],note:'Keep the afternoon lighter after an early market start. Jan 10 remains the weather backup.',geo:'After Oi Racecourse, eat around Oimachi/Shinagawa or return to Shinjuku. Avoid stacking another long queue after the market.'},
+{d:'Jan 10',w:'Sun',title:'Koenji',sub:'Late-start vintage with built-in flexibility',type:'shop',energy:'MEDIUM',summary:'Vintage · casual food · rain backup',items:[['Late AM','Koenji','Start once shops are opening.'],['Lunch','Casual neighbourhood meal','Ramen, curry, gyoza or teishoku all fit.'],['Afternoon','Vintage and record-store browsing','Mix curated shops and bargain hunting.'],['Evening','Flexible','Stay for an izakaya or return early.']],chips:['Koenji','Vintage','Flea backup'],note:'If the flea market is cancelled Saturday, swap Jan 9 and Jan 10, then move Ginza to another open afternoon.'},
+{d:'Jan 11',w:'Mon',title:'Yokohama',sub:'A separate day trip without Kamakura spillover',type:'trip',energy:'MED+',summary:'Waterfront · neighbourhood food · friend slot',items:[['Late AM','Travel to Yokohama','This can start later than Kamakura.'],['Midday','Food-focused exploration','Choose one or two distinct areas rather than covering the whole city.'],['Afternoon','Waterfront wandering','Keep the route scenic and low pressure.'],['Evening','Friends dinner slot #2','Movable placeholder depending on where friends prefer.']],chips:['Day trip','Waterfront','Friends TBD'],note:'If a friend dinner is in central Tokyo, leave Yokohama before the evening rush.'},
+{d:'Jan 12',w:'Tue',title:'Easygoing Final Full Day',sub:'A protected flex day before departure',type:'rest',energy:'VERY EASY',summary:'Sleep in · favourites · pack early',items:[['Morning','Sleep in','No alarm and no timed activity.'],['Midday','Return to a favourite area','Choose one nearby meal, shop or neighbourhood you want to revisit.'],['Afternoon','Pack and reset','Organize purchases and avoid a final-day scramble.'],['Evening','Easy final dinner','Keep it local, or use this as a gentle fancy-meal slot.']],chips:['Flex day','Rest','Packing','Final dinner'],note:'This is intentionally protected as an easygoing day. Do not use it to catch every missed item.',geo:'Easy final-day opportunities: repeat a favourite, reserve LAMBERT if a calm one-hour tea experience fits, or use Gyutan no Lemon near home.'},
+{d:'Jan 13',w:'Wed',title:'Shinjuku → NRT',sub:'Protected departure day',type:'rest',energy:'EASY',summary:'Last lunch · pack · airport buffer',items:[['Morning','Sleep in and pack','No cross-city sightseeing.'],['Lunch','Final local meal','Choose something near Hmlet.'],['Early PM','Depart for NRT','Build in a generous airport and transfer buffer.'],['18:45','Flight departs','End the trip without a final-day sprint.']],chips:['Departure','NRT','Protected buffer'],note:'Aim to be at NRT about three hours before departure, with extra allowance for the transfer from Shinjuku.'}
+];
 
-function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    m = checkTime(m);
-    document.getElementById('txt').innerHTML =
-    h + ":" + m;
-    var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
+const bookingTodos=[
+{window:'NOW / ASAP',name:'Confirm AZKK office reopening',detail:'Ask your Tokyo contact whether the office is open Monday Jan 4 after the New Year closure. If not, remove the placeholder and keep Mukai/Omotesando as the primary plan.',action:'Direct email or message to AZKK contact.',when:'Target: by early December'},
+{window:'NOV 29, 2026 · 8:00 PM EST',name:'PST Roppongi for Dec 30',detail:'Anticipated one-month opening for the Dec 30 Ginza/Aoyama/Roppongi day. Treat PST as the Roppongi dinner choice, not an add-on to Tsujihan.',action:'Call PST Roppongi when phone service opens at 10:00 AM JST, equivalent to 8:00 PM EST on the previous date. International call may be needed.',when:'Target meal: Dec 30 dinner'},
+{window:'DEC 1, 2026',name:'Hikiniku to Kome Kichijoji',detail:'January inventory is expected to open on the first of the month. Buy an Advance Priority Ticket for the Jan 2 Kichijoji anchor meal.',action:'Use the official priority-ticket registration site.',when:'Target meal: Jan 2'},
+{window:'EARLY DECEMBER',name:'LAMBERT inventory check',detail:'No fixed release rule is published. Check January TableCheck inventory and reserve a one-hour slot only if it fits Shinjuku/Okubo or the easy Jan 12 plan.',action:'Monitor and book via TableCheck.',when:'Best fit: Jan 12 or Shinjuku flex'},
+{window:'DEC 4, 2026 EST.',name:'Gyutan no Lemon',detail:'If two-month inventory is used, Jan 4 availability may appear around Dec 4. This is a low-friction Shinjuku dinner after AZKK/Omotesando or on another hotel-area night.',action:'Book via TableCheck; continue checking for cancellations.',when:'Best fit: Jan 4, 7 or 12'},
+{window:'MID-DECEMBER',name:'Seirinkan dinner decision',detail:'For Jan 3 Nakameguro, decide whether to call for dinner or keep it as an early lunch walk-in. Lunch offers more flexibility but needs queue strategy.',action:'Call directly for dinner; otherwise arrive near lunch opening.',when:'Target: Jan 3'},
+{window:'MID-DECEMBER',name:'Mukai January schedule check',detail:'Confirm January hours and reservation method before relying on the Jan 8 Yoyogi-Hachiman → Shimokitazawa pairing.',action:'Check official Instagram/current listing.',when:'Best fit: Jan 8'},
+{window:'DEC 20–23',name:'Holiday-hours audit',detail:'Reconfirm Dec 30–Jan 4 operations for Pain Maison, Ginza West Aoyama Garden, YN Coffee Atelier, Tsujihan Ark Hills and all New Year backups.',action:'Check official Instagram, websites and current Google Maps posts.',when:'Applies: Dec 30–Jan 4'},
+{window:'DEC 27–29',name:'Friends dinner placeholders',detail:'Once the two friend dates are known, protect geography by using Jan 4, Jan 10, Jan 11 or Jan 12 rather than moving Atami or flea-market dates.',action:'Confirm dates, neighbourhood and party size.',when:'Two evenings TBD'},
+{window:'JAN 5 · 10:00 PM EST',name:'400°C Pizza release attempt',detail:'This assumes a Jan 8 visit. Inventory is expected to release exactly two days ahead at 12:00 PM JST, which is 10:00 PM EST on the previous calendar date. If Jan 8 does not work, recalculate for the desired meal date.',action:'Use TableCheck with card ready by 9:55 PM EST; refresh at 10:00 PM EST.',when:'Provisional target: Jan 8'},
+{window:'JAN 7–8',name:'Oi Racecourse market verification',detail:'Reconfirm the Jan 9 market, opening time and weather status. Jan 10 remains the backup date.',action:'Check the organizer schedule and morning weather notice.',when:'Event: Jan 9'},
+{window:'DAY BEFORE / SAME DAY',name:'Walk-in queue planning',detail:'Check digital or physical queues for Pain Maison, Tsujihan Ark Hills, Ginza West Aoyama Garden, Gonokami and YN Coffee Atelier.',action:'Use off-peak timing and nearby shopping while waiting.',when:'As shown in calendar'}
+];
+const reservations=[
+{name:'Hikiniku to Kome Kichijoji',level:'high',flag:'BOOK FIRST',window:'Next-month inventory opens on the 1st; priority tickets can cover visits 8 days to 2 months ahead.',method:'Official web registration / Advance Priority Ticket. Phone and social media are not accepted.',fit:'Jan 2 · Kichijoji anchor',status:'Closed Wednesdays; lunch 11:00–15:00, dinner 17:00–21:00.'},
+{name:'400°C Pizza Tokyo · Kagurazaka',level:'high',flag:'TIMED RELEASE',window:'Slots release daily at 12:00 JST for exactly 2 days ahead.',method:'TableCheck only; credit card required. Select a 70-minute slot.',fit:'Floating meal · pair with Kagurazaka; do not force it into a distant neighbourhood day.',status:'One pizza + one drink per guest; maximum group size 4.'},
+{name:'LAMBERT · Okubo',level:'high',flag:'RESERVATION ONLY',window:'No fixed public release rule verified; monitor TableCheck once January inventory appears.',method:'TableCheck. One-hour visit; one food + one drink per guest.',fit:'Shinjuku/Okubo day or easy Jan 12',status:'Book first, then place the surrounding Shinjuku plan around it.'},
+{name:'Gyutan no Lemon · Shinjuku',level:'medium',flag:'RESERVE OR FLEX',window:'Inventory may show up to about 2 months ahead; cancellations can appear close to the date.',method:'TableCheck; same-day free seats may also be available.',fit:'Arrival area, Jan 4 evening, Jan 7 return or Jan 12',status:'Published holiday notice says reopening Jan 4 at 17:00 after Dec 31–Jan 3 closure.'},
+{name:'YN Coffee Atelier · Matsugaya',level:'walk',flag:'WALK-IN',window:'No reservations.',method:'Arrive near opening; only 6 seats. Recheck holiday schedule on Instagram.',fit:'Yanaka/Ueno/Kappabashi east-Tokyo cluster',status:'Normally closed Monday and Thursday; Dec 31 operation remains unconfirmed.'},
+{name:'Ginza West Aoyama Garden',level:'walk',flag:'WALK-IN',window:'No reservations accepted.',method:'Go on a weekday/off-peak; use the official wait-status page if available.',fit:'Dec 30 · Ginza → Aoyama → Roppongi',status:'Normally 11:00–19:00 daily.'},
+{name:'Tsukemen Gonokami Seisakusho',level:'walk',flag:'QUEUE',window:'No reservations.',method:'Go near opening or at an off-peak time; buy the meal ticket and join the line.',fit:'Any Shinjuku day; very close to Hmlet',status:'Keep as a wildcard rather than a fixed appointment.'},
+{name:'Pain Maison Ginza',level:'walk',flag:'DIGITAL QUEUE',window:'No advance reservation.',method:'Use the on-site QR/AirWAIT queue when offered, then shop nearby until called.',fit:'Dec 30 · Ginza',status:'Normally closed Tuesdays; reconfirm New Year hours.'},
+{name:'Mukai · Yoyogi-Hachiman',level:'medium',flag:'VERIFY',window:'Current reservation method and January operating calendar need confirmation.',method:'Check official Instagram/current listing shortly before the trip.',fit:'Pair with Yoyogi-Hachiman → Shimokitazawa on Jan 8',status:'Do not anchor the day until January hours are published.'},
+{name:'Tsujihan · Ark Hills',level:'walk',flag:'WALK-IN / OFF-PEAK',window:'No reservations. Use timing rather than a booking window.',method:'Walk in at Ark Mori Building 3F. Aim for a weekday off-peak period such as mid-afternoon or early evening to reduce queue risk.',fit:'Dec 30 · after Ginza / Aoyama, before or instead of a Roppongi dinner; also geographically compatible with PST Roppongi',status:'Roppongi-itchome / Ark Hills branch, not Azabudai Hills. Current listings show Mon-Fri 11:00–21:30 and Sat-Sun 11:00–20:30; about 20 counter seats. Reconfirm New Year hours.'},
+{name:'PST Roppongi · Pizza Studio Tamaki',level:'high',flag:'RESERVE',window:'Roppongi reservations are reported to open exactly 1 month ahead; weekend slots can fill quickly.',method:'Direct phone reservation. Tabelog lists 03-6434-7932; phone reservations are handled during business hours from 10:00. No online booking is currently advertised for this branch.',fit:'Dec 30 · after Ginza West Aoyama Garden / Roppongi; alternative to Jomon rather than an add-on',status:'Near Nogizaka/Roppongi. Current listings show dinner Wed-Sun, with weekend lunch also available. Reconfirm New Year operations.'},
+{name:'Seirinkan · Nakameguro',level:'medium',flag:'STRATEGIC',window:'No fixed advance-release window verified. Dinner reservations are accepted by phone; lunch is best treated as walk-in/queue.',method:'Call the restaurant directly for dinner. Tabelog lists 03-3714-5160. For lunch, arrive before or near opening because pizza can sell out.',fit:'Jan 3 · directly aligned with Nakameguro → Daikanyama day',status:'About 2–5 minutes from Nakameguro Station. Weekday lunch 11:30–14:00; weekends/holidays 11:30–15:00. Dinner reservations are phone-based.'},
+{name:'Everyday flexible meals',level:'walk',flag:'NO BOOKING',window:'Same-day.',method:'Use Saizeriya, Gusto, Jonathan’s, Royal Host, Yakiniku Like and neighbourhood kissaten/izakaya as recovery meals.',fit:'Jan 1, Jan 7 and any low-energy evening',status:'Verify New Year branch hours in Google Maps or the chain’s official store locator.'}
+];
 
-var city = "Toronto" // Replace London with your City
-let url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&APPID=22d4e741c978538ccba7d43999bb6441"; //change metric to imperial to change units, go to line 519 
-
-var Output;
-async function GetJson() {
-  await fetch(url)
-      .then(res => res.json())
-      .then((out) => {
-          Output = out
-          console.log(Output);
-  }).catch(err => console.error(err));
-  //console.log(Output);
-  Work();
-}
-
-
-var i = 0;
-function Work() {
-  console.log("Start Work,i =" + i)
-//for (i = 0; i < 40; i+=8) {
-  while (i <= 40) {
-  if (i > Output.list.length-7) {
-    console.log("Last one")
-    i  = Output.list.length-1
-    console.log("i " + i)
-    AddDayAndTemerature(whichObject, i)
-    AddWeatherIcons()
-    break;
-    }
-
-  console.log("i " + i)
-  AddDayAndTemerature(whichObject, i)
-  AddWeatherIcons()
-
-  whichObject += 1
-  i += 8
-  }
-}
-function AddWeatherIcons() {
-  switch (Output.list[i].weather["0"].main) {
-    case "Rain":
-      console.log("Rain")
-      rainy()
-      break;
-    case "Clouds":
-        console.log("Clouds")
-        cloudy()
-        break;
-    case "Clear":
-        console.log("Clear")
-        sunny()
-        break;
-    default:
-        console.log("Error: Weather not found - add to switch")
-  }
-}
-
-function AddDayAndTemerature(InputDays, InputHours) {
-
-  switch (((new Date().getDay()) + InputDays) % 7) {
-      case 0:
-        console.log("Sunday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Sunday, " + Output.list[InputHours].main.temp + "C°" // Change the C° for another unit; 
-        // use Math.floor(Output.list[InputHours].main.temp + 0.5) instead of Output.list[InputHours].main.temp to round the numbers
-        break;
-      case 1:
-        console.log("Monday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Monday, " + Output.list[InputHours].main.temp + "C°"
-        break;
-      case 2:
-        console.log("Tuesday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Tuesday, " + Output.list[InputHours].main.temp + "C°"
-        break;
-      case 3:
-        console.log("Wednesday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Wednesday, " + Output.list[InputHours].main.temp + "C°"
-        break;
-      case 4:
-        console.log("Thursday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Thursday, " + Output.list[InputHours].main.temp + "C°"
-        break;
-      case 5:
-      console.log(InputHours)
-        console.log("Friday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Friday, " + Output.list[InputHours].main.temp + "C°"
-        break;
-      case 6:
-        console.log("Saturday, " + Output.list[InputHours].main.temp + "C°")
-        document.querySelector("div.Text.Obj" + InputDays).innerHTML = "Saturday, " + Output.list[InputHours].main.temp + "C°"
-        break;
-    }
-}
-
-var whichObject = 0
-
-
-function sun_shower() {
-  console.log("sun_shower");
-  console.log("Icons has been added to " + whichObject)
-  document.querySelector("div[data-element=icon_Obj" + whichObject + "]").className ="icon sun-shower"
-  document.querySelector("div[data-element=a_Obj" + whichObject + "]").className ="cloud"
-  document.querySelector("div[data-element=a_a_Obj" + whichObject + "]").className =""
-  document.querySelector("div[data-element=b_Obj" + whichObject + "]").className ="sun"
-  document.querySelector("div[data-element=b_a_Obj" + whichObject + "]").className ="rays"
-  document.querySelector("div[data-element=b_b_Obj" + whichObject + "]").className =""
-  document.querySelector("div[data-element=c_Obj" + whichObject + "]").className ="rain"
-}
-
-function thunder_storm() {
-  console.log("thunder_storm")
-  console.log("Icons has been added to " + whichObject)
-  document.querySelector("div[data-element=icon_Obj" + whichObject + "]").className ="icon thunder-storm";
-  document.querySelector("div[data-element=a_Obj" + whichObject + "]").className = "cloud";
-  document.querySelector("div[data-element=a_a_Obj" + whichObject + "]").className = "cloud";
-  document.querySelector("div[data-element=b_Obj" + whichObject + "]").className = "lightning";
-  document.querySelector("div[data-element=b_a_Obj" + whichObject + "]").className = "bolt"
-  document.querySelector("div[data-element=b_b_Obj" + whichObject + "]").className = "bolt"
-  document.querySelector("div[data-element=c_Obj" + whichObject + "]").className =""
-}
-
-function cloudy() {
-  console.log("cloudy")
-  console.log("Icons has been added to " + whichObject)
-  document.querySelector("div[data-element=icon_Obj" + whichObject + "]").className ="icon cloudy";
-  document.querySelector("div[data-element=a_Obj" + whichObject + "]").className = "cloud";
-  document.querySelector("div[data-element=a_a_Obj" + whichObject + "]").className = "";
-  document.querySelector("div[data-element=b_Obj" + whichObject + "]").className = "cloud";
-  document.querySelector("div[data-element=b_a_Obj" + whichObject + "]").className = ""
-  document.querySelector("div[data-element=b_b_Obj" + whichObject + "]").className = ""
-  document.querySelector("div[data-element=c_Obj" + whichObject + "]").className =""
-}
-
-function flurries() {
-  console.log("flurries")
-  console.log("Icons has been added to " + whichObject)
-  document.querySelector("div[data-element=icon_Obj" + whichObject + "]").className ="icon flurries";
-  document.querySelector("div[data-element=a_Obj" + whichObject + "]").className = "cloud";
-  document.querySelector("div[data-element=a_a_Obj" + whichObject + "]").className = "";
-  document.querySelector("div[data-element=b_Obj" + whichObject + "]").className = "snow";
-  document.querySelector("div[data-element=b_a_Obj" + whichObject + "]").className = "flake"
-  document.querySelector("div[data-element=b_b_Obj" + whichObject + "]").className = "flake"
-  document.querySelector("div[data-element=c_Obj" + whichObject + "]").className =""
-}
-
-function sunny() {
-  console.log("sunny")
-  console.log("Icons has been added to " + whichObject)
-  document.querySelector("div[data-element=icon_Obj" + whichObject + "]").className ="icon sunny";
-  document.querySelector("div[data-element=a_Obj" + whichObject + "]").className = "sun";
-  document.querySelector("div[data-element=a_a_Obj" + whichObject + "]").className = "rays";
-  document.querySelector("div[data-element=b_Obj" + whichObject + "]").className = "";
-  document.querySelector("div[data-element=b_a_Obj" + whichObject + "]").className = ""
-  document.querySelector("div[data-element=b_b_Obj" + whichObject + "]").className = ""
-  document.querySelector("div[data-element=c_Obj" + whichObject + "]").className =""
-}
-
-function rainy() {
-  console.log("rainy")
-  console.log("Icons has been added to " + whichObject)
-  document.querySelector("div[data-element=icon_Obj" + whichObject + "]").className ="icon rainy";
-  document.querySelector("div[data-element=a_Obj" + whichObject + "]").className = "cloud";
-  document.querySelector("div[data-element=a_a_Obj" + whichObject + "]").className = "";
-  document.querySelector("div[data-element=b_Obj" + whichObject + "]").className = "rain";
-  document.querySelector("div[data-element=b_a_Obj" + whichObject + "]").className = ""
-  document.querySelector("div[data-element=b_b_Obj" + whichObject + "]").className = ""
-  document.querySelector("div[data-element=c_Obj" + whichObject + "]").className =""
-}
-
-    document.getElementById('searchBox').onblur = function (event) {
-        var blurEl = this;
-        setTimeout(function() {
-            blurEl.focus()
-        }, 10);
-    };
+const cal=document.querySelector('#calendar');
+const blanks=1;for(let i=0;i<blanks;i++){const e=document.createElement('div');e.className='day empty';e.setAttribute('aria-hidden','true');cal.appendChild(e)}
+const colors={food:'var(--food)',shop:'var(--shop)',trip:'var(--trip)',rest:'var(--rest)',special:'var(--special)'};
+days.forEach((x,i)=>{const b=document.createElement('button');b.type='button';b.className='day '+x.type;const typeLabel={food:'FOOD + EXPLORE',shop:'SHOPPING',trip:'DAY TRIP',rest:'REST / FLEX',special:'SPECIAL'}[x.type]; const first=x.items[0]?.[1]||''; const later=x.items[x.items.length-1]?.[1]||''; const rigidDates=['Jan 5','Jan 6','Jan 9','Jan 13']; const semiDates=['Dec 31','Jan 2','Jan 7','Jan 11']; const rigidity=rigidDates.includes(x.d)?['STATIC','rigid']:semiDates.includes(x.d)?['SEMI-FIXED','semiflex']:['FLEXIBLE','flexible']; b.innerHTML=`<span class="stripe"></span><div class="date">${x.w.toUpperCase()} · ${x.d.toUpperCase()}</div><div class="day-meta"><span class="mini">${typeLabel}</span><span class="mini">${x.energy}</span><span class="rigidity ${rigidity[1]}">${rigidity[0]}</span></div><div class="place">${x.title}</div><div class="summary"><strong>Start:</strong> ${first}<br><strong>Later:</strong> ${later}</div>`;b.addEventListener('click',()=>select(i,b));cal.appendChild(b)});
+function select(i,b){document.querySelectorAll('.day.selected').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');const x=days[i];document.querySelector('#sideDate').textContent=`${x.w} · ${x.d}`;document.querySelector('#sideTitle').textContent=x.title;document.querySelector('#sideSub').textContent=x.sub+' · '+( ['Jan 5','Jan 6','Jan 9','Jan 13'].includes(x.d)?'STATIC DAY':['Dec 31','Jan 2','Jan 7','Jan 11'].includes(x.d)?'SEMI-FIXED DAY':'FLEXIBLE DAY' );document.querySelector('#timeline').innerHTML=x.items.map(v=>`<div class="time">${v[0]}</div><div class="activity"><strong>${v[1]}</strong>${v[2]}</div>`).join('');document.querySelector('#chips').innerHTML=x.chips.map(c=>`<span class="chip">${c}</span>`).join('');document.querySelector('#note').innerHTML=`<strong>Pacing note</strong><br>${x.note}`;document.querySelector('#geo').innerHTML=`<strong>Geographic food opportunity</strong><br>${x.geo||'Keep food flexible and choose based on energy and nearby openings.'}`;const lumineMap={'Dec 29':'Optional quick look after check-in only if energy is surprisingly good.','Dec 30':'Good late-afternoon or post-dinner option after returning to Shinjuku, but do not force it on the first full day.','Jan 1':'Potential indoor fallback if holiday hours are confirmed; expect New Year crowds and sales.','Jan 3':'Easy stop on the way back from Nakameguro/Daikanyama if you finish early.','Jan 4':'Best planned opportunity: finish Shibuya/Omotesando, then return via Shinjuku and browse Lumine before dinner.','Jan 7':'Excellent low-effort option after returning from Atami, only if unpacking and rest are done.','Jan 8':'Good evening stop after Shimokitazawa because the route naturally returns through Shinjuku.','Jan 10':'Good evening option after Koenji; direct Chuo Line return makes this especially convenient.','Jan 12':'Best relaxed overflow slot. Revisit Lumine without sacrificing another neighbourhood.','Jan 13':'Only for a very quick final pickup near opening; protect the NRT transfer buffer.'};document.querySelector('#lumine').innerHTML=lumineMap[x.d]?`<strong>Lumine window</strong><br>${lumineMap[x.d]}`:'<strong>Lumine window</strong><br>No deliberate Lumine detour recommended on this day.';document.querySelector('#flexNote').textContent=i===11?'Weather fallback: swap with Jan 10 if needed.':'';if(innerWidth<801)document.querySelector('.sidebar').scrollIntoView({behavior:'smooth',block:'start'})}
+const todoList=document.querySelector('#todoList');
+function renderTodos(){const completed=JSON.parse(sessionStorage.getItem('tokyoTodo')||'[]');todoList.innerHTML=bookingTodos.map((t,i)=>`<label class="todo-item ${completed.includes(i)?'done':''}"><input class="todo-check" type="checkbox" data-i="${i}" ${completed.includes(i)?'checked':''}><div class="todo-window">${t.window}</div><div><div class="todo-name">${t.name}</div><div class="todo-detail">${t.detail}</div><div class="todo-action"><strong>Method:</strong> ${t.action}</div></div><div class="todo-when">${t.when}</div></label>`).join('');document.querySelector('#todoProgress').textContent=`${completed.length} of ${bookingTodos.length} complete`;todoList.querySelectorAll('.todo-check').forEach(c=>c.addEventListener('change',()=>{let a=JSON.parse(sessionStorage.getItem('tokyoTodo')||'[]');const i=Number(c.dataset.i);a=c.checked?[...new Set([...a,i])]:a.filter(x=>x!==i);sessionStorage.setItem('tokyoTodo',JSON.stringify(a));renderTodos()}));}
+renderTodos();document.querySelector('#resetTodos').addEventListener('click',()=>{sessionStorage.removeItem('tokyoTodo');renderTodos()});
+document.querySelector('#reserveGrid').innerHTML=reservations.map(r=>`<article class="reserve-card"><span class="priority ${r.level}">${r.flag}</span><h3>${r.name}</h3><p>${r.status}</p><div class="reserve-row"><b>Release window</b><span>${r.window}</span></div><div class="reserve-row"><b>How to reserve</b><span>${r.method}</span></div><div class="reserve-row"><b>Best itinerary fit</b><span>${r.fit}</span></div></article>`).join('');
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.querySelector('#'+btn.dataset.view).classList.add('active');}));
+const first=cal.querySelectorAll('button.day')[0];select(0,first);
+})();
 </script>
+</body>
+</html>
